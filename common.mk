@@ -25,6 +25,8 @@ FIRRTL ?= java -Xmx2G -Xss8M -XX:MaxPermSize=256M -cp $(FIRRTL_JAR) firrtl.Drive
 $(FIRRTL_JAR): $(shell find $(rocketchip_dir)/firrtl/src/main/scala -iname "*.scala")
 	$(MAKE) -C $(rocketchip_dir)/firrtl SBT="$(SBT)" root_dir=$(rocketchip_dir)/firrtl build-scala
 	touch $(FIRRTL_JAR)
+	mkdir -p $(rocketchip_dir)/lib
+	cp -p $(FIRRTL_JAR) rocket-chip/lib
 	mkdir -p $(rocketchip_dir)/chisel3/lib
 	cp -p $(FIRRTL_JAR) $(rocketchip_dir)/chisel3/lib
 

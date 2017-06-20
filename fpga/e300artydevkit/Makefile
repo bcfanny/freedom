@@ -8,7 +8,7 @@ VIVADOFLAGS := \
 # bootrom jumps to.
 FLASHED_PROGRAM ?=
 
-bit := obj/system.bit
+bit := obj/E300ArtyDevKitFPGATop.bit
 $(bit): script/impl.tcl  script/init.tcl
 	VSRC_TOP=$(VSRC_TOP) EXTRA_VSRCS="$(EXTRA_VSRCS)" $(VIVADO) $(VIVADOFLAGS) -source script/init.tcl -source script/impl.tcl
 

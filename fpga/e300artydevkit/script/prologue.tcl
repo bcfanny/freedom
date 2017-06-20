@@ -6,7 +6,7 @@ set constrsdir [file join $commondir constrs]
 set wrkdir [file join [pwd] obj]
 set ipdir [file join $wrkdir ip]
 
-set top {system}
+set top {E300ArtyDevKitFPGATop}
 
 create_project -part $part_fpga -in_memory
 set_property -dict [list \
