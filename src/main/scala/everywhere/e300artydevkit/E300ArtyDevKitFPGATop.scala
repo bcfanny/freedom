@@ -114,6 +114,8 @@ class E300ArtyDevKitFPGATop(implicit val p: Parameters) extends RawModule {
 
   val SRST_n         = Wire(Bool())
 
+  val dut_ndreset    = Wire(Bool())
+
   //-----------------------------------------------------------------------
   // Clock & Reset
   //-----------------------------------------------------------------------
@@ -135,7 +137,7 @@ class E300ArtyDevKitFPGATop(implicit val p: Parameters) extends RawModule {
   ip_reset_sys.io.slowest_sync_clk := clock_8MHz
   ip_reset_sys.io.ext_reset_in     := ck_rst & SRST_n
   ip_reset_sys.io.aux_reset_in     := true.B
-  ip_reset_sys.io.mb_debug_sys_rst := false.B
+  ip_reset_sys.io.mb_debug_sys_rst := dut_ndreset
   ip_reset_sys.io.dcm_locked       := mmcm_locked
   reset_core                       := ip_reset_sys.io.mb_reset
   reset_bus                        := ip_reset_sys.io.bus_struct_reset
@@ -188,6 +190,9 @@ class E300ArtyDevKitFPGATop(implicit val p: Parameters) extends RawModule {
 
     // jtag reset
     dut.io.jtag_reset := jtag_power_on_reset
+
+    // debug reset
+    dut_ndreset := dut.io.ndreset
 
     //---------------------------------------------------------------------
     // Assignment to package pins

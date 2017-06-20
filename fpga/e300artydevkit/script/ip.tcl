@@ -3,11 +3,11 @@ set_property -dict [list \
   CONFIG.PRIMITIVE {MMCM} \
   CONFIG.RESET_TYPE {ACTIVE_LOW} \
   CONFIG.CLKOUT1_USED {true} \
-        CONFIG.CLKOUT2_USED {true} \
-        CONFIG.CLKOUT3_USED {true} \
+  CONFIG.CLKOUT2_USED {true} \
+  CONFIG.CLKOUT3_USED {true} \
   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {8.388} \
-        CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {65.000} \
-        CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {32.500} \
+  CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {65.000} \
+  CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {32.500} \
   ] [get_ips mmcm]
 
 create_ip -vendor xilinx.com -library ip -name proc_sys_reset -module_name reset_sys -dir $ipdir -force

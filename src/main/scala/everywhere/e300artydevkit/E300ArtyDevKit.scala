@@ -85,6 +85,7 @@ class E300ArtyDevKitTopIO(implicit val p: Parameters) extends Bundle {
     val aon = new MockAONWrapperPadsIO()
   }
   val jtag_reset = Bool(INPUT)
+  val ndreset    = Bool(OUTPUT)
 }
 
 //-------------------------------------------------------------------------
@@ -215,6 +216,8 @@ class E300ArtyDevKitTop(implicit val p: Parameters) extends Module {
   sjtag.jtag <> jtag_pins.io.jtag
   sjtag.reset := io.jtag_reset
   sjtag.mfr_id := p(JtagDTMKey).idcodeManufId.U(11.W)
+
+  io.ndreset := sys.debug.ndreset
 
   // AON Pads
   io.pads.aon <> sys.aon.pads
