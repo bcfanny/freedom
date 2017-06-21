@@ -1,3 +1,5 @@
+// See LICENSE file for license details.
+
 // Divide clock by 256, used to generate 32.768 kHz clock for AON block
 module ClockDivider256
 (

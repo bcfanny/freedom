@@ -20,24 +20,17 @@ import sifive.blocks.devices.i2c._
 //-------------------------------------------------------------------------
 
 class E300ArtyDevKitCoreplex(implicit p: Parameters) extends BareCoreplex
-    with CoreplexNetwork
-    with CoreplexRISCVPlatform
     with HasRocketTiles {
-  override lazy val module = new E300ArtyDevKitCoreplexModule(this, () =>
-new E300ArtyDevKitCoreplexBundle(this))
+  override lazy val module = new E300ArtyDevKitCoreplexModule(this, () => new E300ArtyDevKitCoreplexBundle(this))
 }
 
 class E300ArtyDevKitCoreplexBundle[+L <: E300ArtyDevKitCoreplex](_outer: L)
 extends BareCoreplexBundle(_outer)
-    with CoreplexNetworkBundle
-    with CoreplexRISCVPlatformBundle
     with HasRocketTilesBundle
 
 class E300ArtyDevKitCoreplexModule[+L <: E300ArtyDevKitCoreplex, +B <:
 E300ArtyDevKitCoreplexBundle[L]](_outer: L, _io: () => B)
   extends BareCoreplexModule(_outer, _io)
-    with CoreplexNetworkModule
-    with CoreplexRISCVPlatformModule
     with HasRocketTilesModule
 
 //-------------------------------------------------------------------------
